@@ -1,0 +1,36 @@
+package programs;
+import java.util.Scanner;
+
+public class Convert 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner (System.in);  
+		
+		System.out.print("Enter decimal number: ");
+		int decimal = scan.nextInt();  
+		
+		int quotient = decimal;
+		int remainder;
+		String hold = ""; //will contain the remainder
+		
+		while(quotient > 0)  //"quotient" changes after every iteration and while loop converts decimal to octal
+		{
+			remainder = quotient % 8; 
+			quotient /= 8;  
+			hold = remainder + hold; //after every iteration remainder gets added to empty string
+		}
+		System.out.println("Octal value: " + hold);
+		
+		if (decimal == 0) //handles special case
+		{
+			String last = "0";
+			System.out.println("Octal value: " + last);
+			scan.close();
+		}
+		
+		scan.close();
+	}
+
+}
