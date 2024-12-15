@@ -1,0 +1,65 @@
+package programs;
+import java.util.Scanner;
+
+public class Access 
+{
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		String pswd = "terps";
+		int num = 1847;
+		final int attempts = 3;
+		int currentAttempts = 0;
+		
+		boolean accessGranted = false;
+		
+		while (currentAttempts < attempts)//runs until user exhausts all attempts
+		{
+			
+			System.out.print("Enter password: ");
+			String password = scan.next();
+			
+			if(password.equalsIgnoreCase("quit")) 
+			{
+				System.out.println("Access Denied");
+				break;
+			}
+			
+			if(password.equals(pswd))//verify's different scenarios of password and number being entered correctly or not
+			{
+				System.out.print("Enter number: ");
+				int number = scan.nextInt();
+				
+				if (number == num)
+				{
+					System.out.println("Access Granted");
+					accessGranted = true;
+					break;
+			    }
+				else
+				{
+					System.out.println("Wrong credentials");
+				}
+			}
+			else 
+			{
+				System.out.println("Wrong credentials");
+			}
+			currentAttempts++;
+			
+			
+		}
+		
+		if(!accessGranted && currentAttempts == attempts)//checks to see if all attempts exhausted and whether credentials are valid
+		{
+			System.out.println("Wrong credentials");
+			System.out.println("Access Denied");
+		}
+		
+		scan.close();
+	}
+		
+	}
+
+
